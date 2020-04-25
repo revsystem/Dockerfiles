@@ -26,7 +26,7 @@ docker container run -it amzn2-awscliv2 /bin/bash --login
 If you want to use your `~/.aws`,`~/.ssh,` and your local volume on container, you could use `-v` option.
 
 ```shell
-docker container run -it -v ~/.aws:/home/ec2-user/.aws -v ~/.ssh:/home/ec2-user/.ssh -v $(pwd):/aws amzn2-awscliv2 /bin/bash --login
+docker container run -it -v ~/.aws:/home/ec2-user/.aws -v ~/.ssh:/home/ec2-user/.ssh -v $(pwd):/home/ec2-user/aws amzn2-awscliv2 /bin/bash --login
 ```
 
 If you want to run the container background, you need to use `-d`.

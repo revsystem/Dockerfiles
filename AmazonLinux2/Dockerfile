@@ -75,6 +75,7 @@ RUN git clone https://github.com/tfutils/tfenv.git ~/.tfenv \
     && git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build \
     && echo 'export PATH="$HOME/.rbenv/bin:$PATH"' | tee -a ~/.bash_profile \
     && echo 'eval "$(rbenv init -)"' | tee -a ~/.bash_profile \
+    && echo 'export PATH="/usr/local/bin/aws:$PATH"' | tee -a ~/.bash_profile \
     && . ~/.bash_profile \
     # install Terraform.
     && tfenv install ${TERRAFORM_VERSION} \
