@@ -11,6 +11,10 @@ This docker image contain below development environment.
 - Ansible:2.9.7
 - aws-cli:v2
 
+## dockerhub
+
+<https://hub.docker.com/repository/docker/revsystem/amzn2>
+
 ## image build
 
 ```shell
