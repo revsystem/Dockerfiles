@@ -88,6 +88,8 @@ RUN git clone https://github.com/tfutils/tfenv.git ~/.tfenv \
     && rbenv global ${RUBY_VERSION} \
     # upgrade pip.
     && pip install --upgrade pip \ 
+    # install wheel
+    && pip install wheel \
     # install Ansible.
     && pip install ansible==${ANSIBLE_VERSION}
 
