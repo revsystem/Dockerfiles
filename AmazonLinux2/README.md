@@ -18,6 +18,8 @@ This docker image contain below development environment.
 ## image build
 
 ```shell
+git clone https://github.com/revsystem/Dockerfiles.git
+cd Dockerfiles/AmazonLinux2
 docker image build -t amzn2-awscliv2 .
 ```
 

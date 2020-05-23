@@ -52,12 +52,8 @@ RUN set -x \
         https://github.com/greymd/tmux-xpanes/releases/download/v${XPANES_VERSION}/tmux-xpanes_v${XPANES_VERSION}.rpm \
         # install keybase (need for Teffarom OpenPGP signature verification)
         https://prerelease.keybase.io/keybase_amd64.rpm \
-        # https://aws.amazon.com/jp/premiumsupport/knowledge-center/ec2-enable-epel/
-        https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
-    # install from epel repository.
-    && yum-config-manager --enable epel \
-    && yum install --enablerepo=epel -y \
-        sshpass \
+    &&  amazon-linux-extras install epel -y \
+        yum install -y sshpass \
     && yum clean all \
     # add user.
     && useradd -m -r -G wheel -s /bin/bash ${USERNAME} \
