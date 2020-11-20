@@ -13,7 +13,7 @@ This docker image contain below development environment.
 
 ## dockerhub
 
-<https://hub.docker.com/repository/docker/revsystem/amzn2>
+<https://hub.docker.com/r/revsystem/amzn2>
 
 ## image build
 
@@ -35,17 +35,24 @@ If you want to use your `~/.aws`,`~/.ssh,` and your local volume on container, y
 docker container run -it -v ~/.aws:/home/ec2-user/.aws -v ~/.ssh:/home/ec2-user/.ssh -v $(pwd):/home/ec2-user/aws amzn2-awscliv2 /bin/bash --login
 ```
 
-If you want to run the container background, you need to use `-d`.
+If you want to run the container in the background, you need to use `-d` option.
 
 ```shell
-docker container run -itd --name amzn2-awscliv2 amzn2-awscliv2
-docker container exec -it amzn2-awscliv2 /bin/bash --login
+docker container run -itd --name amzn2-mycontainer amzn2-awscliv2
+docker container exec -it amzn2-mycontainer /bin/bash --login
 ```
 
 ## image pull and run
 
-You could pull this image from dockerhub.
+You could pull this image from Docker Hub.
 
 ```shell
 docker container run -it revsystem/amzn2 /bin/bash --login
+```
+
+If you want to run the container in the background, you need to use `-d` option.
+
+```shell
+docker container run -itd --name amzn2-mycontainer2 revsystem/amzn2
+docker container exec -it amzn2-mycontainer2 /bin/bash --login
 ```
