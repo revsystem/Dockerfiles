@@ -1,6 +1,6 @@
 # Amazon Linux 2 on Docker
 
-This docker image contain below development environment.
+This docker image contains below development environment.
 
 - rbenv
 - Ruby:2.7.1
@@ -11,7 +11,7 @@ This docker image contain below development environment.
 - Ansible:2.9.7
 - aws-cli:v2
 
-## dockerhub
+## Docker Hub
 
 <https://hub.docker.com/r/revsystem/amzn2>
 
@@ -29,7 +29,7 @@ docker image build -t amzn2-awscliv2 .
 docker container run -it amzn2-awscliv2 /bin/bash --login
 ```
 
-If you want to use your `~/.aws`,`~/.ssh,` and your local volume on container, you could use `-v` option.
+If you want to use your `~/.aws`,`~/.ssh,` and your local volume at the container, you could use `-v` option.
 
 ```shell
 docker container run -it -v ~/.aws:/home/ec2-user/.aws -v ~/.ssh:/home/ec2-user/.ssh -v $(pwd):/home/ec2-user/aws amzn2-awscliv2 /bin/bash --login
