@@ -14,7 +14,7 @@ LABEL maintainer="<tsuyoshi@rev-system.net>" \
         description="Amazon Linux 2 with some development environments"
 
 # set package version.
-ENV RUBY_VERSION="2.7" \
+ENV RUBY_VERSION="2.6" \
     PYTHON_VERSION="3.8" \
     TERRAFORM_VERSION="1.1.5" \
     ANSIBLE_VERSION="2.9.9" \
@@ -31,14 +31,10 @@ RUN set -x \
         git \
         jq \
         less \
-        libffi-devel \
         make \
         openssl \
         openssl-devel \
         procps \
-        readline \
-        readline-devel \
-        sqlite-devel \
         sshpass \
         sudo \
         tar \
@@ -52,10 +48,13 @@ RUN set -x \
     && amazon-linux-extras install -y python${PYTHON_VERSION} \
     # install Ruby
     && amazon-linux-extras install ruby${RUBY_VERSION} \
+    # install ansible
+    && amazon-linux-extras install ansible2 \
     # add official HashiCorp Linux repository.
     && yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo \
     && yum install -y terraform \
     && yum clean all \
+    && rm -rf /var/cache/yum \
     # add user.
     && useradd -m -r -G wheel -s /bin/bash ${USERNAME} \
     && echo "${USERNAME}:${PASSWORD}" | chpasswd \
