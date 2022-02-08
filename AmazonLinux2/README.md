@@ -2,7 +2,7 @@
 
 This docker image contains below development environment.
 
-- Ruby:2.7
+- Ruby:2.6
 - Python:3.8
 - Terraform:1.1.5
 - Ansible:2.9.9

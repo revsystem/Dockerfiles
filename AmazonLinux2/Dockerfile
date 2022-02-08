@@ -16,8 +16,6 @@ LABEL maintainer="<tsuyoshi@rev-system.net>" \
 # set package version.
 ENV RUBY_VERSION="2.6" \
     PYTHON_VERSION="3.8" \
-    TERRAFORM_VERSION="1.1.5" \
-    ANSIBLE_VERSION="2.9.9" \
     USERNAME="ec2-user" \
     PASSWORD="ec2-user"
 
