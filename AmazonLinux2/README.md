@@ -2,10 +2,10 @@
 
 This docker image contains below development environment.
 
-- Ruby:2.6
-- Python:3.8
+- Ruby:2.7.5
+- Python:3.9.10
 - Terraform:1.1.5
-- Ansible:2.9
+- Ansible:2.9.27
 - aws-cli:v2
 
 ## Docker Hub
