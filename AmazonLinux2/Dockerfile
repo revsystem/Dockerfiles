@@ -14,10 +14,10 @@ LABEL maintainer="<tsuyoshi@rev-system.net>" \
         description="Amazon Linux 2 with some development environments"
 
 # set package version.
-ENV RUBY_VERSION="2.7.5" \
+ENV RUBY_VERSION="3.2.1" \
     PYTHON_VERSION="3.9.10" \
-    TERRAFORM_VERSION="1.1.5" \
-    ANSIBLE_VERSION="2.9.0" \
+    TERRAFORM_VERSION="1.3.9" \
+    ANSIBLE_VERSION="2.10.17" \
     USERNAME="ec2-user" \
     PASSWORD="ec2-user"
 
@@ -32,9 +32,11 @@ RUN set -x \
         jq \
         less \
         libffi-devel \
+        libyaml-devel \
         make \
         openssl \
         openssl-devel \
+        openssl-libs \
         # shasum tool. (need for Terraform SHA256 hash validation)
         perl-Digest-SHA \
         procps \
@@ -43,8 +45,10 @@ RUN set -x \
         sqlite-devel \
         sudo \
         tar \
+        tk-devel \
         unzip \
         wget \
+        xz-devel \
         yum-utils \
         zlib-devel \
         # install keybase (need for Teffarom OpenPGP signature verification)
@@ -68,14 +72,15 @@ WORKDIR /home/${USERNAME}
 RUN git clone https://github.com/tfutils/tfenv.git ~/.tfenv \
     && echo 'export PATH="$HOME/.tfenv/bin:$PATH"' | tee -a ~/.bash_profile \
     # install pyenv.
-    && git clone git://github.com/yyuu/pyenv.git ~/.pyenv \
-    && echo 'export PATH="$HOME/.pyenv/shims:$HOME/.pyenv/bin:$PATH"' | tee -a ~/.bash_profile \
+    && git clone https://github.com/yyuu/pyenv.git ~/.pyenv \
+    && echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bash_profile \
+    && echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bash_profile \
     && echo 'eval "$(pyenv init -)"' | tee -a ~/.bash_profile \
     # install rbenv.
     && git clone https://github.com/sstephenson/rbenv.git ~/.rbenv \
     && git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build \
-    && echo 'export PATH="$HOME/.rbenv/bin:$PATH"' | tee -a ~/.bash_profile \
-    && echo 'eval "$(rbenv init -)"' | tee -a ~/.bash_profile \
+    && echo 'eval "$(~/.rbenv/bin/rbenv init - bash)"' >> ~/.bash_profile \
+    # aws-cli
     && echo 'export PATH="/usr/local/bin/aws:$PATH"' | tee -a ~/.bash_profile \
     && . ~/.bash_profile \
     # install Terraform.
